@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 26
     buildToolsVersion "26.0.2"
     defaultConfig {
         applicationId "com.example.tie.criscros"
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -21,8 +21,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    final SUPPORT_LIBRARY_VERSION = '25.0.0'
-    final MOXY_VERSION = '1.5.3'
+    final SUPPORT_LIBRARY_VERSION = '26.0.0-beta1'
 
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -36,10 +35,6 @@ dependencies {
     compile "com.android.support:design:$SUPPORT_LIBRARY_VERSION"
     compile "com.android.support:cardview-v7:$SUPPORT_LIBRARY_VERSION"
 
-    /* mvp */
-//    compile "com.arello-mobile:moxy:$MOXY_VERSION"
-//    provided "com.arello-mobile:moxy-compiler:$MOXY_VERSION"
-//    compile "com.arello-mobile:moxy-app-compat:$MOXY_VERSION"
-//    compile "com.arello-mobile:moxy-android:$MOXY_VERSION"
+
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }

@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         mButtonCris.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startGame();
+                startGame("cris");
             }
         });
 
@@ -27,20 +27,15 @@ public class MainActivity extends AppCompatActivity {
         mButtonCross.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startGame("cross");
             }
         });
+
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-    public void startGame() {
+    public void startGame(String s) {
         Intent intent = new Intent(this, GameActivity.class);
-//        intent.putExtra("cris_or_cros",s);
+        intent.putExtra("game", s);
         startActivity(intent);
 
     }

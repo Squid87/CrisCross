@@ -9,7 +9,8 @@
         android:id="@+id/winner_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:textColor="@color/red"/>
 
 
     <LinearLayout
@@ -108,13 +109,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="80dp">
-
-        <Button
-            android:id="@+id/back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Назад"
-            tools:ignore="ButtonStyle" />
 
         <Button
             android:id="@+id/new_game"

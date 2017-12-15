@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CrisCros.iml" filepath="$PROJECT_DIR$/CrisCros.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CrisCross.iml" filepath="$PROJECT_DIR$/CrisCross.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

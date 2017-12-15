@@ -1,6 +1,7 @@
 package com.example.tie.criscros;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -8,11 +9,11 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.Objects;
 import java.util.Random;
 
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
-
 
     ImageButton mImageButton1;
     ImageButton mImageButton2;
@@ -24,13 +25,15 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     ImageButton mImageButton8;
     ImageButton mImageButton9;
     Button mButtonNewGame;
-    Button mButtonBack;
     TextView mWinner;
 
-    int[][] field = new int[3][3];
+
+    private int[][] field = new int[3][3];
+    public String crisOrCross;
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         initBind();
@@ -39,6 +42,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 field[i][j] = 2;
             }
         }
+        Intent intent = getIntent();
+        crisOrCross = intent.getStringExtra("game");
+
+        if (Objects.equals(crisOrCross, "cross")) {
+            nextMove();
+        }
+
         mImageButton1.setOnClickListener(this);
         mImageButton2.setOnClickListener(this);
         mImageButton3.setOnClickListener(this);
@@ -48,6 +58,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         mImageButton7.setOnClickListener(this);
         mImageButton8.setOnClickListener(this);
         mImageButton9.setOnClickListener(this);
+        mButtonNewGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -63,7 +80,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         mImageButton8 = (ImageButton) findViewById(R.id.eight);
         mImageButton9 = (ImageButton) findViewById(R.id.nine);
         mButtonNewGame = (Button) findViewById(R.id.new_game);
-        mButtonBack = (Button) findViewById(R.id.back);
     }
 
 
@@ -134,9 +150,12 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 checkWinn();
                 nextMove();
                 break;
+            case R.id.new_game:
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                break;
         }
     }
-
 
     private void nextMove() {
         Random randNumber = new Random();
@@ -209,52 +228,67 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         if (field[0][0] == 1 && field[0][1] == 1 && field[0][2] == 1) {
             mWinner.setText("Выйграли Крестики!");
+            disableField();
         }
         if (field[1][0] == 1 && field[1][1] == 1 && field[1][2] == 1) {
             mWinner.setText("Выйграли Крестики!");
+            disableField();
         }
         if (field[2][0] == 1 && field[2][1] == 1 && field[2][2] == 1) {
             mWinner.setText("Выйграли Крестики!");
+            disableField();
         }
         if (field[0][0] == 1 && field[1][0] == 1 && field[2][0] == 1) {
             mWinner.setText("Выйграли Крестики!");
+            disableField();
         }
         if (field[0][1] == 1 && field[1][1] == 1 && field[2][1] == 1) {
             mWinner.setText("Выйграли Крестики!");
+            disableField();
         }
         if (field[0][2] == 1 && field[1][2] == 1 && field[2][2] == 1) {
             mWinner.setText("Выйграли Крестики!");
+            disableField();
         }
         if (field[0][0] == 1 && field[1][1] == 1 && field[2][2] == 1) {
             mWinner.setText("Выйграли Крестики!");
+            disableField();
         }
         if (field[0][2] == 1 && field[1][1] == 1 && field[2][0] == 1) {
             mWinner.setText("Выйграли Крестики!");
+            disableField();
         }
 
         if (field[0][0] == 0 && field[0][1] == 0 && field[0][2] == 0) {
             mWinner.setText("Выйграли Нолики!");
+            disableField();
         }
         if (field[1][0] == 0 && field[1][1] == 0 && field[1][2] == 0) {
             mWinner.setText("Выйграли Нолики!");
+            disableField();
         }
         if (field[2][0] == 0 && field[2][1] == 0 && field[2][2] == 0) {
             mWinner.setText("Выйграли Нолики!");
+            disableField();
         }
         if (field[0][0] == 0 && field[1][0] == 0 && field[2][0] == 0) {
             mWinner.setText("Выйграли Нолики!");
         }
         if (field[0][1] == 0 && field[1][1] == 0 && field[2][1] == 1) {
             mWinner.setText("Выйграли Нолики!");
+            disableField();
         }
         if (field[0][2] == 0 && field[1][2] == 0 && field[2][2] == 0) {
             mWinner.setText("Выйграли Нолики!");
+            disableField();
         }
         if (field[0][0] == 0 && field[1][1] == 0 && field[2][2] == 0) {
             mWinner.setText("Выйграли Нолики!");
+            disableField();
         }
         if (field[0][2] == 0 && field[1][1] == 0 && field[2][0] == 0) {
             mWinner.setText("Выйграли Нолики!");
+            disableField();
         }
 //        int hor1 = 0;
 //        int ver1 = 0;
@@ -281,6 +315,28 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 //            if (hor0 == 3 || ver0 == 3) {
 //                mWinner.setText("Выйграли Нолики!");
 //            }
+    }
+
+    private void disableField() {
+        mImageButton1.setEnabled(false);
+        mImageButton2.setEnabled(false);
+        mImageButton3.setEnabled(false);
+        mImageButton4.setEnabled(false);
+        mImageButton5.setEnabled(false);
+        mImageButton6.setEnabled(false);
+        mImageButton7.setEnabled(false);
+        mImageButton8.setEnabled(false);
+        mImageButton9.setEnabled(false);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }
 
