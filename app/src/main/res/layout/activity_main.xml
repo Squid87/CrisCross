@@ -12,6 +12,7 @@
         android:layout_gravity="center"
         android:layout_marginLeft="40dp"
         android:text="Игара крестиками"
+        android:textStyle="bold|italic"
         tools:layout_editor_absoluteX="109dp"
         tools:layout_editor_absoluteY="154dp" />
 
@@ -21,6 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Игра ноликами"
+        android:textStyle="bold|italic"
         tools:layout_editor_absoluteX="121dp"
         tools:layout_editor_absoluteY="231dp" />
 

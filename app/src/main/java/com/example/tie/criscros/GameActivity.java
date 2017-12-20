@@ -3,6 +3,7 @@ package com.example.tie.criscros;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -45,10 +46,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = getIntent();
         crisOrCross = intent.getStringExtra("game");
 
-        if (Objects.equals(crisOrCross, "cross")) {
-            nextMove();
-        }
-
         mImageButton1.setOnClickListener(this);
         mImageButton2.setOnClickListener(this);
         mImageButton3.setOnClickListener(this);
@@ -65,7 +62,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
             }
         });
-
     }
 
     private void initBind() {
@@ -82,12 +78,19 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         mButtonNewGame = (Button) findViewById(R.id.new_game);
     }
 
-
     @Override
     public void onClick(View v) {
 
         switch (v.getId()) {
             case R.id.one:
+                if (Objects.equals(crisOrCross, "cross")) {
+                    mImageButton1.setImageDrawable(getDrawable(R.drawable.cros));
+                    field[0][0] = 0;
+                    mImageButton1.setEnabled(false);
+                    checkWinn();
+                    nextMove();
+                    break;
+                }
                 mImageButton1.setImageDrawable(getDrawable(R.drawable.cris));
                 field[0][0] = 1;
                 mImageButton1.setEnabled(false);
@@ -95,6 +98,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 nextMove();
                 break;
             case R.id.two:
+                if (Objects.equals(crisOrCross, "cross")) {
+                    mImageButton2.setImageDrawable(getDrawable(R.drawable.cros));
+                    field[0][1] = 0;
+                    mImageButton2.setEnabled(false);
+                    checkWinn();
+                    nextMove();
+                    break;
+                }
                 mImageButton2.setImageDrawable(getDrawable(R.drawable.cris));
                 field[0][1] = 1;
                 mImageButton2.setEnabled(false);
@@ -102,6 +113,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 nextMove();
                 break;
             case R.id.three:
+                if (Objects.equals(crisOrCross, "cross")) {
+                    mImageButton3.setImageDrawable(getDrawable(R.drawable.cros));
+                    field[0][2] = 0;
+                    mImageButton3.setEnabled(false);
+                    checkWinn();
+                    nextMove();
+                    break;
+                }
                 mImageButton3.setImageDrawable(getDrawable(R.drawable.cris));
                 field[0][2] = 1;
                 mImageButton3.setEnabled(false);
@@ -109,6 +128,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 nextMove();
                 break;
             case R.id.four:
+                if (Objects.equals(crisOrCross, "cross")) {
+                    mImageButton4.setImageDrawable(getDrawable(R.drawable.cros));
+                    field[1][0] = 0;
+                    mImageButton4.setEnabled(false);
+                    checkWinn();
+                    nextMove();
+                    break;
+                }
                 mImageButton4.setImageDrawable(getDrawable(R.drawable.cris));
                 field[1][0] = 1;
                 mImageButton4.setEnabled(false);
@@ -116,6 +143,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 nextMove();
                 break;
             case R.id.five:
+                if (Objects.equals(crisOrCross, "cross")) {
+                    mImageButton5.setImageDrawable(getDrawable(R.drawable.cros));
+                    field[1][1] = 0;
+                    mImageButton5.setEnabled(false);
+                    checkWinn();
+                    nextMove();
+                    break;
+                }
                 mImageButton5.setImageDrawable(getDrawable(R.drawable.cris));
                 field[1][1] = 1;
                 mImageButton5.setEnabled(false);
@@ -123,13 +158,29 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 nextMove();
                 break;
             case R.id.six:
+                if (Objects.equals(crisOrCross, "cross")) {
+                    mImageButton6.setImageDrawable(getDrawable(R.drawable.cros));
+                    field[1][2] = 0;
+                    mImageButton6.setEnabled(false);
+                    checkWinn();
+                    nextMove();
+                    break;
+                }
                 mImageButton6.setImageDrawable(getDrawable(R.drawable.cris));
-                field[0][2] = 1;
+                field[1][2] = 1;
                 mImageButton6.setEnabled(false);
                 checkWinn();
                 nextMove();
                 break;
             case R.id.seven:
+                if (Objects.equals(crisOrCross, "cross")) {
+                    mImageButton7.setImageDrawable(getDrawable(R.drawable.cros));
+                    field[2][0] = 0;
+                    mImageButton7.setEnabled(false);
+                    checkWinn();
+                    nextMove();
+                    break;
+                }
                 mImageButton7.setImageDrawable(getDrawable(R.drawable.cris));
                 field[2][0] = 1;
                 mImageButton7.setEnabled(false);
@@ -137,15 +188,31 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 nextMove();
                 break;
             case R.id.eight:
+                if (Objects.equals(crisOrCross, "cross")) {
+                    mImageButton8.setImageDrawable(getDrawable(R.drawable.cros));
+                    field[2][1] = 0;
+                    mImageButton8.setEnabled(false);
+                    checkWinn();
+                    nextMove();
+                    break;
+                }
                 mImageButton8.setImageDrawable(getDrawable(R.drawable.cris));
-                field[0][1] = 1;
+                field[2][1] = 1;
                 mImageButton8.setEnabled(false);
                 checkWinn();
                 nextMove();
                 break;
             case R.id.nine:
+                if (Objects.equals(crisOrCross, "cross")) {
+                    mImageButton9.setImageDrawable(getDrawable(R.drawable.cros));
+                    field[2][2] = 0;
+                    mImageButton9.setEnabled(false);
+                    checkWinn();
+                    nextMove();
+                    break;
+                }
                 mImageButton9.setImageDrawable(getDrawable(R.drawable.cris));
-                field[0][2] = 1;
+                field[2][2] = 1;
                 mImageButton9.setEnabled(false);
                 checkWinn();
                 nextMove();
@@ -162,159 +229,203 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         int i = randNumber.nextInt(3);
         int j = randNumber.nextInt(3);
 
-        if (field[i][j] == 2) {
-            field[i][j] = 0;
-            if (i == 0 && j == 0) {
-                mImageButton1.setImageDrawable(getDrawable(R.drawable.cros));
-                mImageButton1.setEnabled(false);
+        if (Objects.equals(crisOrCross, "cris")) {
+            if (field[i][j] == 2) {
+                field[i][j] = 0;
+                if (i == 0 && j == 0) {
+                    mImageButton1.setImageDrawable(getDrawable(R.drawable.cros));
+                    mImageButton1.setEnabled(false);
+                    checkWinn();
+                    return;
+                }
+                if (i == 0 && j == 1) {
+                    mImageButton2.setImageDrawable(getDrawable(R.drawable.cros));
+                    mImageButton2.setEnabled(false);
+                    checkWinn();
+                    return;
+                }
+                if (i == 0 && j == 2) {
+                    mImageButton3.setImageDrawable(getDrawable(R.drawable.cros));
+                    mImageButton3.setEnabled(false);
+                    checkWinn();
+                    return;
+                }
+                if (i == 1 && j == 0) {
+                    mImageButton4.setImageDrawable(getDrawable(R.drawable.cros));
+                    mImageButton4.setEnabled(false);
+                    checkWinn();
+                    return;
+                }
+                if (i == 1 && j == 1) {
+                    mImageButton5.setImageDrawable(getDrawable(R.drawable.cros));
+                    mImageButton5.setEnabled(false);
+                    checkWinn();
+                    return;
+                }
+                if (i == 1 && j == 2) {
+                    mImageButton6.setImageDrawable(getDrawable(R.drawable.cros));
+                    mImageButton6.setEnabled(false);
+                    checkWinn();
+                    return;
+                }
+                if (i == 2 && j == 0) {
+                    mImageButton7.setImageDrawable(getDrawable(R.drawable.cros));
+                    mImageButton7.setEnabled(false);
+                    checkWinn();
+                    return;
+                }
+                if (i == 2 && j == 1) {
+                    mImageButton8.setImageDrawable(getDrawable(R.drawable.cros));
+                    mImageButton8.setEnabled(false);
+                    checkWinn();
+                    return;
+                }
+                if (i == 2 && j == 2) {
+                    mImageButton9.setImageDrawable(getDrawable(R.drawable.cros));
+                    mImageButton9.setEnabled(false);
+                    checkWinn();
+                    return;
+                }
+            } else {
                 checkWinn();
-                return;
+                nextMove();
             }
-            if (i == 0 && j == 1) {
-                mImageButton2.setImageDrawable(getDrawable(R.drawable.cros));
-                mImageButton2.setEnabled(false);
-                checkWinn();
-                return;
-            }
-            if (i == 0 && j == 2) {
-                mImageButton3.setImageDrawable(getDrawable(R.drawable.cros));
-                mImageButton3.setEnabled(false);
-                checkWinn();
-                return;
-            }
-            if (i == 1 && j == 0) {
-                mImageButton4.setImageDrawable(getDrawable(R.drawable.cros));
-                mImageButton4.setEnabled(false);
-                checkWinn();
-                return;
-            }
-            if (i == 1 && j == 1) {
-                mImageButton5.setImageDrawable(getDrawable(R.drawable.cros));
-                mImageButton5.setEnabled(false);
-                checkWinn();
-                return;
-            }
-            if (i == 1 && j == 2) {
-                mImageButton6.setImageDrawable(getDrawable(R.drawable.cros));
-                mImageButton6.setEnabled(false);
-                checkWinn();
-                return;
-            }
-            if (i == 2 && j == 0) {
-                mImageButton7.setImageDrawable(getDrawable(R.drawable.cros));
-                mImageButton7.setEnabled(false);
-                checkWinn();
-                return;
-            }
-            if (i == 2 && j == 1) {
-                mImageButton8.setImageDrawable(getDrawable(R.drawable.cros));
-                mImageButton8.setEnabled(false);
-                checkWinn();
-                return;
-            }
-            if (i == 2 && j == 2) {
-                mImageButton9.setImageDrawable(getDrawable(R.drawable.cros));
-                mImageButton9.setEnabled(false);
-                checkWinn();
-                return;
-            }
-        } else {
-            nextMove();
         }
+        if (Objects.equals(crisOrCross, "cross")) {
+            if (field[i][j] == 2) {
+                field[i][j] = 1;
+                if (i == 0 && j == 0) {
+                    mImageButton1.setImageDrawable(getDrawable(R.drawable.cris));
+                    mImageButton1.setEnabled(false);
+                    checkWinn();
+                    return;
+                }
+                if (i == 0 && j == 1) {
+                    mImageButton2.setImageDrawable(getDrawable(R.drawable.cris));
+                    mImageButton2.setEnabled(false);
+                    checkWinn();
+                    return;
+                }
+                if (i == 0 && j == 2) {
+                    mImageButton3.setImageDrawable(getDrawable(R.drawable.cris));
+                    mImageButton3.setEnabled(false);
+                    checkWinn();
+                    return;
+                }
+                if (i == 1 && j == 0) {
+                    mImageButton4.setImageDrawable(getDrawable(R.drawable.cris));
+                    mImageButton4.setEnabled(false);
+                    checkWinn();
+                    return;
+                }
+                if (i == 1 && j == 1) {
+                    mImageButton5.setImageDrawable(getDrawable(R.drawable.cris));
+                    mImageButton5.setEnabled(false);
+                    checkWinn();
+                    return;
+                }
+                if (i == 1 && j == 2) {
+                    mImageButton6.setImageDrawable(getDrawable(R.drawable.cris));
+                    mImageButton6.setEnabled(false);
+                    checkWinn();
+                    return;
+                }
+                if (i == 2 && j == 0) {
+                    mImageButton7.setImageDrawable(getDrawable(R.drawable.cris));
+                    mImageButton7.setEnabled(false);
+                    checkWinn();
+                    return;
+                }
+                if (i == 2 && j == 1) {
+                    mImageButton8.setImageDrawable(getDrawable(R.drawable.cris));
+                    mImageButton8.setEnabled(false);
+                    checkWinn();
+                    return;
+                }
+                if (i == 2 && j == 2) {
+                    mImageButton9.setImageDrawable(getDrawable(R.drawable.cris));
+                    mImageButton9.setEnabled(false);
+                    checkWinn();
+                    return;
+                }
+            } else {
+                checkWinn();
+                nextMove();
+            }
 
+        }
     }
 
-    private void checkWinn() {
+    public void checkWinn() {
 
-        if (field[0][0] == 1 && field[0][1] == 1 && field[0][2] == 1) {
-            mWinner.setText("Выйграли Крестики!");
-            disableField();
+        for (int i = 0; i < 3; i++) {
+            int hor1 = 0;
+            int ver1 = 0;
+
+            for (int j = 0; j < 3; j++) {
+                if (field[i][j] == 1) {
+                    hor1++;
+                }
+                if (field[j][i] == 1) {
+                    ver1++;
+                }
+            }
+            if (hor1 == 3 || ver1 == 3) {
+                mWinner.setText("Выйграли Крестики!");
+                disableField();
+            }
         }
-        if (field[1][0] == 1 && field[1][1] == 1 && field[1][2] == 1) {
-            mWinner.setText("Выйграли Крестики!");
-            disableField();
+        int mdig = 0;
+        int supdig = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (field[i][i] == 1) {
+                mdig++;
+            }
+            if (field[i][2 - i] == 1) {
+                supdig++;
+            }
         }
-        if (field[2][0] == 1 && field[2][1] == 1 && field[2][2] == 1) {
-            mWinner.setText("Выйграли Крестики!");
-            disableField();
-        }
-        if (field[0][0] == 1 && field[1][0] == 1 && field[2][0] == 1) {
-            mWinner.setText("Выйграли Крестики!");
-            disableField();
-        }
-        if (field[0][1] == 1 && field[1][1] == 1 && field[2][1] == 1) {
-            mWinner.setText("Выйграли Крестики!");
-            disableField();
-        }
-        if (field[0][2] == 1 && field[1][2] == 1 && field[2][2] == 1) {
-            mWinner.setText("Выйграли Крестики!");
-            disableField();
-        }
-        if (field[0][0] == 1 && field[1][1] == 1 && field[2][2] == 1) {
-            mWinner.setText("Выйграли Крестики!");
-            disableField();
-        }
-        if (field[0][2] == 1 && field[1][1] == 1 && field[2][0] == 1) {
+        if (mdig == 3 || supdig == 3) {
             mWinner.setText("Выйграли Крестики!");
             disableField();
         }
 
-        if (field[0][0] == 0 && field[0][1] == 0 && field[0][2] == 0) {
-            mWinner.setText("Выйграли Нолики!");
+
+        for (int i = 0; i < 3; i++) {
+            int hor1 = 0;
+            int ver1 = 0;
+
+            for (int j = 0; j < 3; j++) {
+                if (field[i][j] == 0) {
+                    hor1++;
+                }
+                if (field[j][i] == 0) {
+                    ver1++;
+                }
+            }
+
+            if (hor1 == 3 || ver1 == 3) {
+                mWinner.setText("Выйграли Нолики!");
+                disableField();
+            }
+        }
+
+        mdig = 0;
+        supdig = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (field[i][i] == 0) {
+                mdig++;
+            }
+            if (field[i][2 - i] == 0) {
+                supdig++;
+            }
+        }
+        if (mdig == 3 || supdig == 3) {
+            mWinner.setText("Выйграли Нолики");
             disableField();
         }
-        if (field[1][0] == 0 && field[1][1] == 0 && field[1][2] == 0) {
-            mWinner.setText("Выйграли Нолики!");
-            disableField();
-        }
-        if (field[2][0] == 0 && field[2][1] == 0 && field[2][2] == 0) {
-            mWinner.setText("Выйграли Нолики!");
-            disableField();
-        }
-        if (field[0][0] == 0 && field[1][0] == 0 && field[2][0] == 0) {
-            mWinner.setText("Выйграли Нолики!");
-        }
-        if (field[0][1] == 0 && field[1][1] == 0 && field[2][1] == 1) {
-            mWinner.setText("Выйграли Нолики!");
-            disableField();
-        }
-        if (field[0][2] == 0 && field[1][2] == 0 && field[2][2] == 0) {
-            mWinner.setText("Выйграли Нолики!");
-            disableField();
-        }
-        if (field[0][0] == 0 && field[1][1] == 0 && field[2][2] == 0) {
-            mWinner.setText("Выйграли Нолики!");
-            disableField();
-        }
-        if (field[0][2] == 0 && field[1][1] == 0 && field[2][0] == 0) {
-            mWinner.setText("Выйграли Нолики!");
-            disableField();
-        }
-//        int hor1 = 0;
-//        int ver1 = 0;
-//        int hor0 = 0;
-//        int ver0 = 0;
-//        for (int i = 0; i < 3; i++) {
-//            for (int j = 0; j < 3; j++) {
-//                if (field[i][j] == 1) {
-//                    hor1++;
-//                }
-//                if (field[j][i] == 1) {
-//                    ver1++;
-//                }
-//                if (field[i][j] == 0) {
-//                    hor0++;
-//                }
-//                if (field[j][i] == 0) {
-//                    ver0++;
-//                }
-//            }
-//            if (hor1 == 3 || ver1 == 3) {
-//                mWinner.setText("Выйграли Крестики!");
-//            }
-//            if (hor0 == 3 || ver0 == 3) {
-//                mWinner.setText("Выйграли Нолики!");
-//            }
     }
 
     private void disableField() {
@@ -337,6 +448,16 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
     }
 }
 
