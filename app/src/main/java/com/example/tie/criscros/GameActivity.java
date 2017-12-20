@@ -361,69 +361,57 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         for (int i = 0; i < 3; i++) {
             int hor1 = 0;
             int ver1 = 0;
+            int hor0 = 0;
+            int ver0 = 0;
 
             for (int j = 0; j < 3; j++) {
                 if (field[i][j] == 1) {
                     hor1++;
                 }
+                if (field[i][j] == 0) {
+                    hor0++;
+                }
                 if (field[j][i] == 1) {
                     ver1++;
+                }
+                if (field[j][i] == 0) {
+                    ver0++;
                 }
             }
             if (hor1 == 3 || ver1 == 3) {
                 mWinner.setText("Выйграли Крестики!");
                 disableField();
             }
-        }
-        int mdig = 0;
-        int supdig = 0;
-
-        for (int i = 0; i < 3; i++) {
-            if (field[i][i] == 1) {
-                mdig++;
-            }
-            if (field[i][2 - i] == 1) {
-                supdig++;
-            }
-        }
-        if (mdig == 3 || supdig == 3) {
-            mWinner.setText("Выйграли Крестики!");
-            disableField();
-        }
-
-
-        for (int i = 0; i < 3; i++) {
-            int hor1 = 0;
-            int ver1 = 0;
-
-            for (int j = 0; j < 3; j++) {
-                if (field[i][j] == 0) {
-                    hor1++;
-                }
-                if (field[j][i] == 0) {
-                    ver1++;
-                }
-            }
-
-            if (hor1 == 3 || ver1 == 3) {
+            if (hor0 == 3 || ver0 == 3) {
                 mWinner.setText("Выйграли Нолики!");
                 disableField();
             }
         }
-
-        mdig = 0;
-        supdig = 0;
+        int mdig1 = 0;
+        int supdig1 = 0;
+        int mdig0 = 0;
+        int supdig0 = 0;
 
         for (int i = 0; i < 3; i++) {
+            if (field[i][i] == 1) {
+                mdig1++;
+            }
             if (field[i][i] == 0) {
-                mdig++;
+                mdig0++;
+            }
+            if (field[i][2 - i] == 1) {
+                supdig1++;
             }
             if (field[i][2 - i] == 0) {
-                supdig++;
+                supdig0++;
             }
         }
-        if (mdig == 3 || supdig == 3) {
-            mWinner.setText("Выйграли Нолики");
+        if (mdig1 == 3 || supdig1 == 3) {
+            mWinner.setText("Выйграли Крестики!");
+            disableField();
+        }
+        if (mdig0 == 3 || supdig0 == 3) {
+            mWinner.setText("Выйграли Нолики!");
             disableField();
         }
     }
