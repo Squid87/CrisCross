@@ -10,14 +10,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/square_layout_margin_top"
-        android:fontFamily="@font/comicbd"
-        android:gravity="center"
-        android:text="@string/welcome"
+        android:fontFamily="@font/comic"
+        android:text="@string/registration"
         android:textColor="@color/black"
         android:textSize="30sp"
         tools:ignore="UnusedAttribute" />
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,16 +27,15 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-
             <EditText
-                android:id="@+id/edit_text_login"
+                android:id="@+id/edit_text_registration_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/bottom_navigation_notification_margin_left"
+                android:fontFamily="@font/comic"
                 android:ems="10"
                 android:hint="@string/enter_login"
-                android:fontFamily="@font/comicz"
-                android:inputType="textEmailAddress"
+                android:inputType="text"
                 tools:ignore="UnusedAttribute" />
 
         </LinearLayout>
@@ -49,42 +45,65 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
+
             <EditText
-                android:id="@+id/edit_text_password"
+                android:id="@+id/edit_text_registration_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/bottom_navigation_notification_margin_left"
-                android:fontFamily="@font/comicz"
-                android:inputType="numberPassword"
                 android:ems="10"
+                android:fontFamily="@font/comic"
                 android:hint="@string/enter_password"
+                android:inputType="numberPassword"
                 tools:ignore="UnusedAttribute" />
 
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <EditText
+                android:id="@+id/edit_text_registration_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/bottom_navigation_notification_margin_left"
+                android:ems="10"
+                android:fontFamily="@font/comic"
+                android:hint="@string/enter_email"
+                android:inputType="textEmailAddress"
+                tools:ignore="UnusedAttribute" />
+
+
+        </LinearLayout>
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/button_enter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:fontFamily="@font/comicz"
-        android:text="@string/enter"
-        tools:ignore="UnusedAttribute"
-        tools:layout_editor_absoluteX="109dp"
-        tools:layout_editor_absoluteY="154dp" />
 
     <Button
-        android:id="@+id/button_registration"
+        android:id="@+id/button_registrate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/square_layout_margin_top"
-        android:fontFamily="@font/comicz"
-        android:text="@string/registration"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/comic"
+        android:text="@string/registrate"
+        android:textStyle="bold"
+        tools:ignore="UnusedAttribute"
+        tools:layout_editor_absoluteX="121dp"
+        tools:layout_editor_absoluteY="231dp" />
+
+    <Button
+        android:id="@+id/button_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/comic"
+        android:text="@string/back"
+        android:textStyle="bold"
         tools:ignore="UnusedAttribute"
         tools:layout_editor_absoluteX="121dp"
         tools:layout_editor_absoluteY="231dp" />

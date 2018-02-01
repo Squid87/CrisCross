@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion 26
@@ -17,16 +18,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     final SUPPORT_LIBRARY_VERSION = '26.0.0-beta1'
-
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
+    final BUTTERKNIFE_VERSION = '8.8.1'
+    final RETROFIT_VERSION = '2.1.0'
+    final MOXY_VERSION = '1.5.3'
 
     /* support libraries */
     compile "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION"
@@ -34,7 +37,28 @@ dependencies {
     compile "com.android.support:recyclerview-v7:$SUPPORT_LIBRARY_VERSION"
     compile "com.android.support:design:$SUPPORT_LIBRARY_VERSION"
     compile "com.android.support:cardview-v7:$SUPPORT_LIBRARY_VERSION"
-
-
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    compile "com.jakewharton:butterknife:$BUTTERKNIFE_VERSION"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$BUTTERKNIFE_VERSION"
+
+    /* retrofit */
+    compile "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
+    compile "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
+    compile "com.squareup.okhttp3:logging-interceptor:3.2.0"
+
+    /* bottom navigation */
+    compile "com.aurelhubert:ahbottomnavigation:1.5.1"
+    compile "com.roughike:bottom-bar:2.0.2"
+
+    /* mvp */
+    compile "com.arello-mobile:moxy:$MOXY_VERSION"
+    provided "com.arello-mobile:moxy-compiler:$MOXY_VERSION"
+    compile "com.arello-mobile:moxy-app-compat:$MOXY_VERSION"
+    compile "com.arello-mobile:moxy-android:$MOXY_VERSION"
+    annotationProcessor "com.arello-mobile:moxy-compiler:$MOXY_VERSION"
+
+}
+repositories {
+    mavenCentral()
 }

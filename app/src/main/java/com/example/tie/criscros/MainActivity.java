@@ -4,34 +4,39 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.View;
 import android.widget.Button;
+
+import com.example.tie.criscros.Game.GameActivity;
+import com.example.tie.criscros.Registration.RegistrationActivity;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    @BindView(R.id.button_enter)
+    Button mButtonEnter;
+
+    @BindView(R.id.button_registration)
+    Button mButtonRegistration;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
-        Button mButtonCris = (Button) findViewById(R.id.button_new_game_cris);
-        mButtonCris.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startGame("cris");
-            }
-        });
+        mButtonEnter.setOnClickListener(v -> startGame("cris"));
+        //mButtonRegistration.setOnClickListener(v -> startGame("cross"));
+        mButtonRegistration.setOnClickListener(v-> registration());
 
-        Button mButtonCross = (Button) findViewById(R.id.button_new_game_cros);
-        mButtonCross.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startGame("cross");
-            }
-        });
+    }
 
+    private void registration() {
+        Intent intent = new Intent(this, RegistrationActivity.class);
+        startActivity(intent);
     }
 
     public void startGame(String s) {

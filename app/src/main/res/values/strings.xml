@@ -1,3 +1,14 @@
 <resources>
+    <!--main_activity-->
     <string name="app_name">CrisCros</string>
+    <string name="registration">Регистрация</string>
+    <string name="registrate">Зарегистрироваться</string>
+    <string name="enter">Войти</string>
+    <string name="enter_login">Введите логин:</string>
+    <string name="enter_password">Введите пароль:</string>
+    <string name="welcome">Добро пожаловать!</string>
+    <string name="enter_email">Введите почту:</string>
+    <string name="back">Назад</string>
+    <string name="title_activity_registration">RegistrationActivity</string>
+
 </resources>
