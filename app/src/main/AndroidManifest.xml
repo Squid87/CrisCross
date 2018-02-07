@@ -4,6 +4,7 @@
     package="com.example.tie.criscros">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,8 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Game.GameActivity" />
-        <activity android:name=".Registration.RegistrationActivity" />
+        <activity android:name=".game.GameActivity" />
+        <activity android:name=".registration.RegistrationActivity" />
     </application>
 
 </manifest>

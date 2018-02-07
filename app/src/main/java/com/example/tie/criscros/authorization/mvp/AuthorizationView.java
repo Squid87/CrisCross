@@ -1,17 +1,10 @@
-package com.example.tie.criscros.Game;
-
+package com.example.tie.criscros.authorization.mvp;
 
 import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.viewstate.strategy.SkipStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
 @StateStrategyType(SkipStrategy.class)
-interface GameView extends MvpView {
-
-    void nextMove(String s,int i, int j);
-
-    void checkWin(String s);
-
-    void disableField();
-
+public interface AuthorizationView extends MvpView {
+    void success();
 }

@@ -23,6 +23,7 @@ public class ApiService {
     private OkHttpClient okHttpClient;
 
     private ApiService(String URL) {
+        okHttpClient = buildOkHttp();
         mRetrofit = new Retrofit.Builder()
                 .baseUrl(URL)
                 .client(okHttpClient)
@@ -49,8 +50,8 @@ public class ApiService {
         });
         builder.addInterceptor(chain -> {
             Request request = chain.request().newBuilder()
-                    .addHeader("Accept", "application/json")
-                    .addHeader("Content-Type", "application/json")
+                    .addHeader("content-Type", "application/json")
+                    .addHeader("accept", "application/json")
                     .build();
             return chain.proceed(request);
         });
@@ -76,5 +77,7 @@ public class ApiService {
         return cache;
     }
 
-
+    public ApiInterface createApi() {
+        return mRetrofit.create(ApiInterface.class);
+    }
 }

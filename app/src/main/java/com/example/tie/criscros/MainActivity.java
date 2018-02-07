@@ -5,21 +5,38 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
-import com.example.tie.criscros.Game.GameActivity;
-import com.example.tie.criscros.Registration.RegistrationActivity;
+import com.arellomobile.mvp.MvpAppCompatActivity;
+import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.example.tie.criscros.authorization.mvp.AuthorizationPresenter;
+import com.example.tie.criscros.authorization.mvp.AuthorizationView;
+import com.example.tie.criscros.game.GameActivity;
+import com.example.tie.criscros.registration.RegistrationActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends MvpAppCompatActivity implements AuthorizationView {
+    private String login;
+    private String password;
+
+    @InjectPresenter
+    AuthorizationPresenter mAuthorizationPresenter;
 
     @BindView(R.id.button_enter)
     Button mButtonEnter;
 
     @BindView(R.id.button_registration)
     Button mButtonRegistration;
+
+    @BindView(R.id.edit_text_login)
+    EditText mLogin;
+
+    @BindView(R.id.edit_text_password)
+    EditText mPassword;
 
 
     @Override
@@ -29,8 +46,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         mButtonEnter.setOnClickListener(v -> startGame("cris"));
-        //mButtonRegistration.setOnClickListener(v -> startGame("cross"));
-        mButtonRegistration.setOnClickListener(v-> registration());
+        mButtonRegistration.setOnClickListener(v -> registration());
 
     }
 
@@ -40,9 +56,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startGame(String s) {
-        Intent intent = new Intent(this, GameActivity.class);
-        intent.putExtra("game", s);
-        startActivity(intent);
+        if (mLogin.getText().toString().trim().isEmpty()) {
+            mLogin.setError("Введите логин");
+            return;
+        }
+        if (mPassword.getText().toString().trim().isEmpty()) {
+            mPassword.setError("Введите пароль");
+            return;
+        }
+        login = mLogin.getText().toString();
+        password = mPassword.getText().toString();
+        mAuthorizationPresenter.auth(login, password);
+
     }
 
     @Override
@@ -53,5 +78,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
+    }
+
+    @Override
+    public void success() {
+        Toast toast = Toast.makeText(getApplicationContext(),
+                "Good!!!",
+                Toast.LENGTH_SHORT);
     }
 }

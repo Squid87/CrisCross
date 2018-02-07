@@ -54,7 +54,7 @@
                 android:ems="10"
                 android:fontFamily="@font/comic"
                 android:hint="@string/enter_password"
-                android:inputType="numberPassword"
+                android:inputType="text"
                 tools:ignore="UnusedAttribute" />
 
 
@@ -74,7 +74,7 @@
                 android:ems="10"
                 android:fontFamily="@font/comic"
                 android:hint="@string/enter_email"
-                android:inputType="textEmailAddress"
+                android:inputType="text"
                 tools:ignore="UnusedAttribute" />
 
 

@@ -45,7 +45,14 @@ dependencies {
     /* retrofit */
     compile "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
     compile "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
-    compile "com.squareup.okhttp3:logging-interceptor:3.2.0"
+    //compile "com.squareup.okhttp3:logging-interceptor:3.2.0"
+    //compile 'com.squareup.okhttp3:okhttp:3.4.1'
+    compile "com.squareup.okhttp3:okhttp:3.7.0"
+    compile "com.squareup.okhttp3:logging-interceptor:3.7.0"
+
+    /* utils */
+    compile "io.reactivex:rxjava:1.3.2"
+    compile 'io.reactivex:rxandroid:1.2.1'
 
     /* bottom navigation */
     compile "com.aurelhubert:ahbottomnavigation:1.5.1"

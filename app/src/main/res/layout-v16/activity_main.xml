@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/bottom_navigation_notification_margin_left"
                 android:fontFamily="@font/comicz"
-                android:inputType="numberPassword"
+                android:inputType="text"
                 android:ems="10"
                 android:hint="@string/enter_password"
                 tools:ignore="UnusedAttribute" />

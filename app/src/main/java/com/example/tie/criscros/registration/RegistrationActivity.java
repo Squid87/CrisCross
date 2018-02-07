@@ -1,26 +1,25 @@
-package com.example.tie.criscros.Registration;
+package com.example.tie.criscros.registration;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.support.v7.app.AppCompatActivity;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.example.tie.criscros.MainActivity;
 import com.example.tie.criscros.R;
-import com.example.tie.criscros.Registration.MVP.RegistrationPresenter;
-import com.example.tie.criscros.Registration.MVP.RegistrationView;
+import com.example.tie.criscros.registration.mvp.RegistrationPresenter;
+import com.example.tie.criscros.registration.mvp.RegistrationView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class RegistrationActivity extends MvpAppCompatActivity implements RegistrationView{
+public class RegistrationActivity extends MvpAppCompatActivity implements RegistrationView {
+
     @InjectPresenter
     RegistrationPresenter mRegistrationPresenter;
 
@@ -76,12 +75,24 @@ public class RegistrationActivity extends MvpAppCompatActivity implements Regist
         login = mLogin.getText().toString();
         password = mPassword.getText().toString();
         mail = mMail.getText().toString();
-        mRegistrationPresenter.signUp(login,password,mail);
+        mRegistrationPresenter.signUp(login, password, mail);
 
     }
 
     private void back() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void success() {
+        Toast toast = Toast.makeText(getApplicationContext(),
+                "Вы зарегистрированы!",
+                Toast.LENGTH_SHORT);
+    }
+
+    @Override
+    public void mainMenu() {
+        back();
     }
 }

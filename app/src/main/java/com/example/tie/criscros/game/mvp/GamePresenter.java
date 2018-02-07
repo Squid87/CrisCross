@@ -1,4 +1,4 @@
-package com.example.tie.criscros.Game;
+package com.example.tie.criscros.game.mvp;
 
 
 import com.arellomobile.mvp.InjectViewState;
