@@ -7,4 +7,5 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 @StateStrategyType(SkipStrategy.class)
 public interface AuthorizationView extends MvpView {
     void success();
+    void error(String error);
 }

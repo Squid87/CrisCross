@@ -41,9 +41,16 @@ public class AuthorizationPresenter extends MvpPresenter<AuthorizationView> {
 
                     @Override
                     public void onNext(Response<AuthorizationResponse> response) {
-                        AuthorizationResponse respons = response.body();
-                        getViewState().success();
-
+                        if (response.code() == 200) {
+                            getViewState().success();
+                        }
+                        if (response.code() == 403) {
+                            try {
+                                getViewState().error(response.errorBody().string().substring(31, 54));
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
                     }
                 });
     }

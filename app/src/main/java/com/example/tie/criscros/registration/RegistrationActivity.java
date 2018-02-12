@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.view.Gravity;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -94,5 +95,12 @@ public class RegistrationActivity extends MvpAppCompatActivity implements Regist
     @Override
     public void mainMenu() {
         back();
+    }
+
+    @Override
+    public void error(String s) {
+        Toast toast = Toast.makeText(getApplicationContext(),s, Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
     }
 }

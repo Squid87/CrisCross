@@ -44,9 +44,17 @@ public class RegistrationPresenter extends MvpPresenter<RegistrationView> {
 
                     @Override
                     public void onNext(Response<RegistrationResponse> response) {
-                        RegistrationResponse respons = response.body();
-                        getViewState().success();
-                        getViewState().mainMenu();
+                        if (response.code() == 200) {
+                            getViewState().success();
+                            getViewState().mainMenu();
+                        }
+                        if (response.code() == 403) {
+                            try {
+                                getViewState().error(response.errorBody().string().substring(31,54));
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
                     }
                 });
     }

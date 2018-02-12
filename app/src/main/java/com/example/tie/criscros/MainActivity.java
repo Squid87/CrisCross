@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -83,7 +84,15 @@ public class MainActivity extends MvpAppCompatActivity implements AuthorizationV
     @Override
     public void success() {
         Toast toast = Toast.makeText(getApplicationContext(),
-                "Good!!!",
-                Toast.LENGTH_SHORT);
+                "Good!!!", Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
+    }
+
+    @Override
+    public void error(String error) {
+        Toast toast = Toast.makeText(getApplicationContext(), error, Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
     }
 }

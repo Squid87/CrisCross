@@ -9,4 +9,5 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 public interface RegistrationView extends MvpView {
     void success();
     void mainMenu();
+    void error(String massage);
 }
